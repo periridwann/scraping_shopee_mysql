@@ -14,7 +14,7 @@ shopee_link = 'https://shopee.co.id/search?keyword=tas%20pria'
 driver.set_window_size(1300,800)
 driver.get(shopee_link)
 
-# berapa panjang scroll kebawah
+# berapa panjang scroll kebawah (500 pixel)
 rentang = 500
 # dibuat sampai 7 agar (1 sampai 6)
 for i in range(1,7):
