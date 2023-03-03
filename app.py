@@ -1,11 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup
-import pandas as pd
 import time
 import mysql.connector
 
+# agar tidak menampilkan browser saat menjalankan script
 opsi = webdriver.ChromeOptions()
+# untuk 
 opsi.add_argument('--headless')
 servis = Service('chromedriver.exe')
 driver = webdriver.Chrome(service=servis, options=opsi)
@@ -22,15 +23,16 @@ for i in range(1,7):
 # buat perintah menggunakan javascript
     perintah = "window.scrollTo(0,"+str(akhir)+")"
     driver.execute_script(perintah)
+    # untuk menampilkan sudah berapa halaman yang discroll
     print("loading ke-"+str(i))
     time.sleep(1)
 
 time.sleep(10)
 
-driver.save_screenshot('home.png')
 content = driver.page_source
 driver.quit()
 
+# beautifulsoup untuk parsing data
 data = BeautifulSoup(content, 'html.parser')
 # print(data.encode('utf-8'))
 
